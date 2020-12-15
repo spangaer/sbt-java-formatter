@@ -42,7 +42,7 @@ object JavaFormatter {
       for (file <- files if file.exists) {
         try {
           val contents = IO.read(file)
-          val formatted = formatter.formatSource(contents)
+          val formatted = formatter.formatSourceAndFixImports(contents)
           if (formatted != contents) IO.write(file, formatted)
         } catch {
           // TODO what type of exceptions can we get here?
